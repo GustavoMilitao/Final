@@ -10,3 +10,15 @@ C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\Trab
 C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\TrabalhoFinal\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
 C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\TrabalhoFinal\Entities\obj\Debug\Entities.dll
 C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\TrabalhoFinal\Entities\obj\Debug\Entities.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\Entities.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\Entities.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\MongoDB.Bson.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\MongoDB.Driver.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\MongoDB.Bson.xml
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\MongoDB.Driver.xml
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\obj\Debug\Entities.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Entities\obj\Debug\Entities.pdb

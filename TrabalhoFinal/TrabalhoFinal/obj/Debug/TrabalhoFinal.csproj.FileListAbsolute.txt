@@ -15,3 +15,20 @@ C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\Trab
 C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.csprojResolveAssemblyReference.cache
 C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.exe
 C:\Users\956275\Documents\Visual Studio 2017\Projects\Gabriel\TrabalhoFinal\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\TrabalhoFinal.exe.config
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\TrabalhoFinal.exe
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\TrabalhoFinal.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\DAL.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\Entities.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\MongoDB.Bson.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\MongoDB.Driver.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\DAL.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\Entities.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\MongoDB.Bson.xml
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\MongoDB.Driver.xml
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.csprojResolveAssemblyReference.cache
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.exe
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.pdb

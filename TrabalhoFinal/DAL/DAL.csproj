@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionClass.cs" />
+    <Compile Include="EstoqueDAL.cs" />
+    <Compile Include="OperadorCaixaDAL.cs" />
+    <Compile Include="VendaDAL.cs" />
     <Compile Include="ProdutoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +66,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{0ecdd11d-f393-4fec-ae58-7a6d3936aa6c}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{d9594000-cb9e-40f6-9b2b-4b664862edec}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

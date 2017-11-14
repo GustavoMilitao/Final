@@ -11,8 +11,17 @@ namespace TrabalhoFinal
     {
         public static string connectionString = @"mongodb://eckounltd:cefet123@custerpokemon-shard-00-00-zznsg.mongodb.net:27017,custerpokemon-shard-00-01-zznsg.mongodb.net:27017,custerpokemon-shard-00-02-zznsg.mongodb.net:27017/test?ssl=true&replicaSet=CusterPokemon-shard-0&authSource=admin";
 
-        public static IMongoDatabase Connection {
-            get { if (Connection == null) { Connection = getNewConnection("SGN") } }
+        private static IMongoDatabase connection;
+        public static IMongoDatabase Connection
+        {
+            get
+            {
+                if (connection == null)
+                {
+                    connection = getNewConnection("SGN");
+                }
+                return connection;
+            }
         }
         static IMongoDatabase getNewConnection(string dataBase)
         {

@@ -9,8 +9,16 @@ namespace Entities
 {
     public class Produto
     {
-        public ObjectId codigoBarra { get; set; }
+        public ObjectId _id { get; set; }
         public string Descricao { get; set; }
+        public int QuantidadeNoEstoque { get; set; }
         public double ValorUnitario { get; set; }
+
+        public Produto(string descricao, double valorUnitario, int quantidadeNoEstoque)
+        {
+            Descricao = descricao;
+            ValorUnitario = valorUnitario;
+            QuantidadeNoEstoque = quantidadeNoEstoque;
+        }
     }
 }

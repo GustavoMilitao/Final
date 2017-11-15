@@ -1,0 +1,4 @@
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Util\bin\Debug\Util.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Util\bin\Debug\Util.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Util\obj\Debug\Util.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\Util\obj\Debug\Util.pdb

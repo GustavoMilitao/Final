@@ -26,3 +26,5 @@ C:\Users\956275\Source\Repos\Final\TrabalhoFinal\DAL\bin\Debug\MongoDB.Driver.Co
 C:\Users\956275\Source\Repos\Final\TrabalhoFinal\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\956275\Source\Repos\Final\TrabalhoFinal\DAL\obj\Debug\DAL.dll
 C:\Users\956275\Source\Repos\Final\TrabalhoFinal\DAL\obj\Debug\DAL.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\DAL\bin\Debug\Util.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\DAL\bin\Debug\Util.pdb

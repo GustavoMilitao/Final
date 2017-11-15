@@ -74,6 +74,10 @@
       <Project>{0ecdd11d-f393-4fec-ae58-7a6d3936aa6c}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{D9594000-CB9E-40F6-9B2B-4B664862EDEC}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

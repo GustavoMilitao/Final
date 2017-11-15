@@ -32,3 +32,7 @@ C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\MongoDB
 C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.csprojResolveAssemblyReference.cache
 C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.exe
 C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\obj\Debug\TrabalhoFinal.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\BLL.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\Util.dll
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\BLL.pdb
+C:\Users\956275\Source\Repos\Final\TrabalhoFinal\TrabalhoFinal\bin\Debug\Util.pdb

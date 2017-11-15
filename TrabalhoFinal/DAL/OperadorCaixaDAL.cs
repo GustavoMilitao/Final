@@ -16,40 +16,40 @@ namespace DAL
         public static List<OperadorCaixa> Get()
         {
             var db = ConnectionClass.Connection;
-            var OperadoresCaixa = db.GetCollection<OperadorCaixa>("OperadoresCaixa");
-            return OperadoresCaixa.Find(_ => true).ToList();
+            var operadoresCaixa = db.GetCollection<OperadorCaixa>("operadoresCaixa");
+            return operadoresCaixa.Find(_ => true).ToList();
         }
 
         public static OperadorCaixa Get(string codigoOperador)
         {
             var db = ConnectionClass.Connection;
-            var OperadoresCaixa = db.GetCollection<OperadorCaixa>("OperadoresCaixa");
+            var operadoresCaixa = db.GetCollection<OperadorCaixa>("operadoresCaixa");
             var filter = Builders<OperadorCaixa>.Filter.Eq("_id", new ObjectId(codigoOperador));
-            return OperadoresCaixa.Find(filter).FirstOrDefault();
+            return operadoresCaixa.Find(filter).FirstOrDefault();
         }
 
         public static void Post(string nome, string usuario, string senha)
         {
             var db = ConnectionClass.Connection;
-            var OperadoresCaixa = db.GetCollection<OperadorCaixa>("OperadoresCaixa");
-            OperadoresCaixa.InsertOne(new OperadorCaixa(nome, usuario, senha));
+            var operadoresCaixa = db.GetCollection<OperadorCaixa>("operadoresCaixa");
+            operadoresCaixa.InsertOne(new OperadorCaixa(nome, usuario, senha));
         }
 
         public static void Put(string codigoOperador, string nome, string usuario, string senha)
         {
             var db = ConnectionClass.Connection;
             var filter = Builders<OperadorCaixa>.Filter.Eq("_id", new ObjectId(codigoOperador));
-            var OperadoresCaixa = db.GetCollection<OperadorCaixa>("OperadoresCaixa");
+            var operadoresCaixa = db.GetCollection<OperadorCaixa>("operadoresCaixa");
             var update = Builders<OperadorCaixa>.Update.Set("Nome", nome).Set("Usuario", usuario).Set("Senha", senha);
-            OperadoresCaixa.UpdateOne(filter, update) ;
+            operadoresCaixa.UpdateOne(filter, update) ;
         }
 
         public static void Delete(string codigoOperador)
         {
             var db = ConnectionClass.Connection;
             var filter = Builders<OperadorCaixa>.Filter.Eq("_id", new ObjectId(codigoOperador));
-            var OperadoresCaixa = db.GetCollection<OperadorCaixa>("OperadoresCaixa");
-            OperadoresCaixa.DeleteOne(filter);
+            var operadoresCaixa = db.GetCollection<OperadorCaixa>("operadoresCaixa");
+            operadoresCaixa.DeleteOne(filter);
         }
     }
 }

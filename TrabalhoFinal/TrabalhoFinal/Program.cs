@@ -22,15 +22,17 @@ namespace TrabalhoFinal
                 Console.WriteLine("============== Sistema de gestão de vendas e produtos (SGVP) ==============\n\n");
 
                 Console.WriteLine("============== Digite a opção desejada e tecle ENTER ==============\n");
-                Console.WriteLine("a) Produtos\n");
-                Console.WriteLine("b) Estoque\n");
-                Console.WriteLine("c) Operadores Caixa\n");
-                Console.WriteLine("d) Vendas\n");
-                Console.WriteLine("e) Calcular item\n");
-                Console.WriteLine("f) Validar item estoque item\n");
-                Console.WriteLine("g) Emitir cupom fiscal\n");
-                Console.WriteLine("h) Calcular valor desconto forma de pagamento\n");
-                Console.WriteLine("i) Produtos em baixa\n");
+                Console.WriteLine("a) Produtos");
+                Console.WriteLine("b) Estoque");
+                Console.WriteLine("c) Operadores Caixa");
+                Console.WriteLine("d) Vendas");
+                Console.WriteLine("e) Calcular item");
+                Console.WriteLine("f) Validar item estoque item");
+                Console.WriteLine("g) Emitir cupom fiscal");
+                Console.WriteLine("h) Calcular valor desconto forma de pagamento");
+                Console.WriteLine("i) Atualizar Estoque");
+                Console.WriteLine("j) Produtos em baixa");
+                Console.WriteLine("0 - Finalizar\n");
 
                 input = Console.ReadLine().ToLower();
                 switch (input)
@@ -43,7 +45,8 @@ namespace TrabalhoFinal
                     case "f": ValidarQuantidadeEstoque(); break;
                     case "g": EmitirCupomFiscal();break;
                     case "h": CalcularValorDescontoFormaPagamento(); break;
-                    case "i": ProdutosBaixoEstoque();break;
+                    case "i": UpdateEstoque();break;
+                    case "j": ProdutosBaixoEstoque();break;
                 }
 
             } while (input != "0");
@@ -427,9 +430,9 @@ namespace TrabalhoFinal
                     return;
                 result = int.TryParse(input, out quantidade);
             }
-            var produto = ProdutoBLL.Get(codigoBarras);
             Console.Clear();
             Console.WriteLine("Por favor aguarde ... ");
+            var produto = ProdutoBLL.Get(codigoBarras);
             if (produto == null)
             {
                 Console.Clear();
@@ -531,7 +534,7 @@ namespace TrabalhoFinal
             var produtos = ProdutoBLL.Get();
             // ======== Transformando a lista de produtos em um dicionário numerado ======
             //              (para o usuário escolher mais facilmente na tela) 
-            var dic = produtos.Select((val, index) => new { Index = index, Value = val })
+            var dic = produtos.Where(p => p.QuantidadeNoEstoque > 0).Select((val, index) => new { Index = index, Value = val })
                .ToDictionary(i => i.Index, i => i.Value);
             // ======== Buscando no banco os produtos cadastrados ======
             do
@@ -541,7 +544,10 @@ namespace TrabalhoFinal
                 terminouLoop = false;
                 foreach (KeyValuePair<int, Produto> produto in dic)
                 {
-                    Console.WriteLine(produto.Key + " - " + produto.Value.Descricao);
+                    if (produto.Value.QuantidadeNoEstoque > 0)
+                    {
+                        Console.WriteLine(produto.Key + " - " + produto.Value.Descricao);
+                    }
                 }
                 Console.WriteLine("Digite o número do produto acima para adicioná-lo à venda (-2 para concluir, -1 - sair) :");
                 input = Console.ReadLine();
@@ -555,13 +561,16 @@ namespace TrabalhoFinal
                     // (digitado um número de produto que não existe na lista ou caracteres alfanuméricos)
                     int produtoAdicionar = 0;
                     result = int.TryParse(input, out produtoAdicionar);
-                    while (!result || !dic.ContainsKey(produtoAdicionar))
+                    while (!result || !(dic[produtoAdicionar].QuantidadeNoEstoque > 0))
                     {
                         Console.Clear();
                         Console.WriteLine(" ============== Entrada inválida. ============== \n\n");
                         foreach (KeyValuePair<int, Produto> produto in dic)
                         {
-                            Console.WriteLine(produto.Key + " - " + produto.Value.Descricao);
+                            if (produto.Value.QuantidadeNoEstoque > 0)
+                            {
+                                Console.WriteLine(produto.Key + " - " + produto.Value.Descricao);
+                            }
                         }
                         Console.WriteLine("Digite o número do produto acima para adicioná-lo à venda (-2 para concluir, -1 - sair) :");
                         input = Console.ReadLine();
@@ -578,9 +587,10 @@ namespace TrabalhoFinal
                         result = int.TryParse(input, out produtoAdicionar);
                     }
                     // Tratamento para certificar que o input foi correto.
-                    if (dic.ContainsKey(produtoAdicionar))
+                    if (dic[produtoAdicionar].QuantidadeNoEstoque > 0)
                     {
                         produtosSelecionados.Add(dic[produtoAdicionar]);
+                        dic[produtoAdicionar].QuantidadeNoEstoque--;
                     }
                     if (terminouLoop)
                         break;
@@ -631,6 +641,13 @@ namespace TrabalhoFinal
                     return;
                 result = int.TryParse(input, out formaPagamento);
             }
+            Console.Clear();
+            Console.WriteLine("Por favor aguarde ... ");
+            var pOnly = dic.Values.ToList();
+            foreach(var p in pOnly)
+            {
+                EstoqueBLL.Put(p._id.ToString(), p.QuantidadeNoEstoque);
+            }
             // Chamada do método do banco de dados
             VendaBLL.Post(converterListaProdutoListaProdutoVenda(produtosSelecionados), (FormaPagamento)formaPagamento);
 
@@ -675,6 +692,50 @@ namespace TrabalhoFinal
 
             Console.Clear();
             Console.WriteLine("Produto atualizado com sucesso!");
+            Console.WriteLine("Digite qualquer tecla para voltar");
+            Console.ReadKey();
+        }
+
+        public static void UpdateEstoque()
+        {
+            string input = String.Empty;
+            Console.Clear();
+            Console.WriteLine("Digite o código de barras do produto para o qual deseja atualizar o estoque (0 - sair) :");
+            input = Console.ReadLine().TrimEnd().TrimStart();
+            if (input == "0")
+                return;
+            var codigoBarras = input;
+            Console.Clear();
+            Console.WriteLine("Digite a quantidade de estoque do produto para inserir (0 - sair) :");
+            input = Console.ReadLine();
+            if (input == "0")
+                return;
+            int quantidade = 0;
+            bool result = int.TryParse(input, out quantidade);
+            while (!result)
+            {
+                Console.Clear();
+                Console.WriteLine(" ============== Entrada inválida. ============== ");
+                Console.WriteLine("Digite a quantidade de estoque do produto (0 - sair) :");
+                input = Console.ReadLine();
+                if (input == "0")
+                    return;
+                result = int.TryParse(input, out quantidade);
+            }
+            Console.Clear();
+            Console.WriteLine("Por favor aguarde ... ");
+            var produto = ProdutoBLL.Get(codigoBarras);
+            if (produto == null)
+            {
+                Console.Clear();
+                Console.WriteLine("Produto inexistente!");
+            }
+            else
+            {
+                Console.Clear();
+                EstoqueBLL.Put(codigoBarras, quantidade);
+                Console.WriteLine("Estoque atualizado com sucesso");
+            }
             Console.WriteLine("Digite qualquer tecla para voltar");
             Console.ReadKey();
         }
@@ -999,58 +1060,19 @@ namespace TrabalhoFinal
         public static void CalcularValorDescontoFormaPagamento()
         {
             Console.Clear();
-            string input = String.Empty;
-            bool result = true;
-            // Recebendo e tratando formas de pagamento 
-            // (formas de pagamentos estão no ENUM FormaPagamento e estão sendo listadas).
-            Console.WriteLine("Digite a forma de pagamento : (-1 para sair)");
-            var formasPagamento = Enum.GetValues(typeof(FormaPagamento)).Cast<FormaPagamento>();
-            foreach (FormaPagamento pgto in formasPagamento)
-            {
-                Console.WriteLine((int)pgto + " - " + pgto.GetDescription());
-            }
-            input = Console.ReadLine();
-            // Saída do método de inserção
-            if (input == "-1")
+            Console.WriteLine("Codigo da venda : (-1 para sair)");
+            String cod = Console.ReadLine().ToLower();
+            if (cod == "-1")
                 return;
-            int formaPagamento = 0;
-            // Tratamento de exceção: caracter inválido
-            result = int.TryParse(input, out formaPagamento);
-            while (!result)
+            Console.Clear();
+            Console.WriteLine("Por favor aguarde ... ");
+            var venda = VendaBLL.Get(cod);
+            Console.Clear();
+            switch ((FormaPagamento)venda.FormaPagamento)
             {
-                Console.Clear();
-                Console.WriteLine(" ============== Entrada inválida. ============== \n\n");
-                Console.WriteLine("Digite a forma de pagamento : (-1 para sair)");
-                foreach (FormaPagamento pgto in formasPagamento)
-                {
-                    Console.WriteLine(pgto + " - " + pgto.GetDescription());
-                }
-                input = Console.ReadLine();
-                if (input == "-1")
-                    return;
-                result = int.TryParse(input, out formaPagamento);
-            }
-            // Tratamento de exceção : Forma de pagamento não está na lista
-            while (!formasPagamento.Any(f => f == (FormaPagamento)formaPagamento))
-            {
-                Console.Clear();
-                Console.WriteLine(" ============== A forma de pagamento selecionada não existe na lista. Escolha outra ============== \n\n");
-                Console.WriteLine("Digite a forma de pagamento : (-1 para sair)");
-                foreach (FormaPagamento pgto in formasPagamento)
-                {
-                    Console.WriteLine(pgto + " - " + pgto.GetDescription());
-                }
-                input = Console.ReadLine();
-                if (input == "-1")
-                    return;
-                result = int.TryParse(input, out formaPagamento);
-            }
-
-            switch ((FormaPagamento)formaPagamento)
-            {
-                case FormaPagamento.A_VISTA_DEBITO: Console.WriteLine(" A forma de pagamento selecionada possui 2 % de desconto \n\n"); break;
-                case FormaPagamento.A_VISTA_DINHEIRO: Console.WriteLine(" A forma de pagamento selecionada possui 5 % de desconto \n\n"); break;
-                case FormaPagamento.OUTROS: Console.WriteLine(" A forma de pagamento selecionada não possui desconto \n\n"); break;
+                case FormaPagamento.A_VISTA_DEBITO: Console.WriteLine(" Valor total da venda : "+ String.Format(new CultureInfo("pt-BR"), "{0:C}", venda.ValorTotal * 0.98) + "( 2 % de desconto) \n\n"); break;
+                case FormaPagamento.A_VISTA_DINHEIRO: Console.WriteLine(" Valor total da venda : " + String.Format(new CultureInfo("pt-BR"), "{0:C}", venda.ValorTotal * 0.95) + "( 5 % de desconto) \n\n"); break;
+                case FormaPagamento.OUTROS: Console.WriteLine(" Valor total da venda : " + String.Format(new CultureInfo("pt-BR"), "{0:C}", venda.ValorTotal) + "(sem desconto) \n\n"); break;
             }
 
             Console.WriteLine("Pressione qualquer tecla para voltar");

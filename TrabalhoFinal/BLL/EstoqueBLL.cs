@@ -21,6 +21,11 @@ namespace BLL
             EstoqueDAL.Delete(codigoBarra, quantidadeAdquirida);
         }
 
+        public static void Put(string codigoBarra, int quantidade)
+        {
+            EstoqueDAL.Put(codigoBarra, quantidade);
+        }
+
         public static void AdicionarAoEstoque(string codigoBarra, int quantidadeAAdicionar)
         {
             EstoqueDAL.AdicionarAoEstoque(codigoBarra, quantidadeAAdicionar);

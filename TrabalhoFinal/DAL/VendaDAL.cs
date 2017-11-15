@@ -29,14 +29,14 @@ namespace DAL
             return vendas.Find(filter).FirstOrDefault();
         }
 
-        public static void Post(List<ProdutoVenda> produtos, double valorTotal, FormasPagamento formaPagamento)
+        public static void Post(List<ProdutoVenda> produtos, double valorTotal, FormaPagamento formaPagamento)
         {
             var db = ConnectionClass.Connection;
             var vendas = db.GetCollection<Venda>("vendas");
             vendas.InsertOne(new Venda(produtos, valorTotal, formaPagamento));
         }
 
-        public static void Put(string codigoVenda, List<ProdutoVenda> produtos, double valorTotal, FormasPagamento formaPagamento)
+        public static void Put(string codigoVenda, List<ProdutoVenda> produtos, double valorTotal, FormaPagamento formaPagamento)
         {
             var db = ConnectionClass.Connection;
             var filter = Builders<Venda>.Filter.Eq("_id", new ObjectId(codigoVenda));

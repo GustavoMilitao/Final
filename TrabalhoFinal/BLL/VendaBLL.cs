@@ -21,13 +21,15 @@ namespace BLL
             return VendaDAL.Get(codigoVenda);
         }
 
-        public static void Post(List<ProdutoVenda> produtos, double valorTotal, FormasPagamento formaPagamento)
+        public static void Post(List<ProdutoVenda> produtos, FormaPagamento formaPagamento)
         {
+            var valorTotal = produtos.Sum(produto => produto.ValorTotalProdutoVenda);
             VendaDAL.Post(produtos, valorTotal, formaPagamento);
         }
 
-        public static void Put(string codigoVenda, List<ProdutoVenda> produtos, double valorTotal, FormasPagamento formaPagamento)
+        public static void Put(string codigoVenda, List<ProdutoVenda> produtos, FormaPagamento formaPagamento)
         {
+            var valorTotal = produtos.Sum(produto => produto.ValorTotalProdutoVenda);
             VendaDAL.Put(codigoVenda, produtos, valorTotal, formaPagamento);
         }
 

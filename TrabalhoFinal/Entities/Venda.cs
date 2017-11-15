@@ -13,9 +13,9 @@ namespace Entities
         public ObjectId _id { get; set; }
         public List<ProdutoVenda> Produtos { get; set; }
         public double ValorTotal { get; set; }
-        public FormasPagamento? FormaPagamento { get; set; }
+        public FormaPagamento? FormaPagamento { get; set; }
 
-        public Venda(List<ProdutoVenda> produtos, double valorTotal, FormasPagamento? formaPagamento = null)
+        public Venda(List<ProdutoVenda> produtos, double valorTotal, FormaPagamento? formaPagamento = null)
         {
             Produtos = produtos;
             ValorTotal = valorTotal;

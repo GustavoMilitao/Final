@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Util
 {
-    public enum FormasPagamento
+    public enum FormaPagamento
     {
         [Description("A vista - dinheiro")]
         A_VISTA_DINHEIRO = 0,
